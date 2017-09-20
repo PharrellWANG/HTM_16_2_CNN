@@ -43,7 +43,6 @@ set(SRC_TLibCommon
   source/Lib/TLibCommon/TComPicYuv.cpp
   source/Lib/TLibCommon/TComPicYuv.h
   source/Lib/TLibCommon/TComPicYuvMD5.cpp
-  source/Lib/TLibCommon/TComPicYuvMD5.h
   source/Lib/TLibCommon/TComPrediction.cpp
   source/Lib/TLibCommon/TComPrediction.h
   source/Lib/TLibCommon/TComRdCost.cpp

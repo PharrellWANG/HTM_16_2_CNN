@@ -43,7 +43,7 @@
 #include <vector>
 
 #if NH_3D_DMM
-#define DMM_OFFSET     (NUM_INTRA_MODE+1) // offset for DMM and RBC mode numbers
+#define DMM_OFFSET     (NUM_INTRA_MODE+1) // offset for DMM and RBC mode numbers  //Pharrell.zx 36+1=37
 #define DMM_MIN_SIZE                   4  // min. block size for DMM and RBC modes
 #define DMM_MAX_SIZE                  32  // max. block size for DMM and RBC modes
 

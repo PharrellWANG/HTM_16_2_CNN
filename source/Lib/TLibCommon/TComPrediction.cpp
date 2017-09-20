@@ -256,7 +256,7 @@ Pel TComPrediction::predIntraGetPredValDC( const Pel* pSrc, Int iSrcStride, UInt
  * the prediction mode index. The prediction direction is given by the displacement of the bottom row of the block and
  * the reference row above the block in the case of vertical prediction or displacement of the rightmost column
  * of the block and reference column left from the block in the case of the horizontal prediction. The displacement
- * is signalled at 1/32 pixel accuracy. When projection of the predicted pixel falls inbetween reference samples,
+ * is signalled at 1/32 pixel accuracy. When projection of the predicted pixel falls in between reference samples,
  * the predicted value for the pixel is linearly interpolated from the reference samples. All reference samples are taken
  * from the extended main reference.
  */
@@ -1740,6 +1740,9 @@ Void TComPrediction::xPredInterBi ( TComDataCU* pcCU, UInt uiPartAddr, Int iWidt
     {
       continue;
     }
+    std::cout << "haha " << std::endl;
+    std::cout << iRefIdx[refList] << std::endl;
+    std::cout << pcCU->getSlice()->getNumRefIdx(eRefPicList) << std::endl;
 
     assert( iRefIdx[refList] < pcCU->getSlice()->getNumRefIdx(eRefPicList) );
 

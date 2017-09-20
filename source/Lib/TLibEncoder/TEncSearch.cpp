@@ -2958,7 +2958,7 @@ TEncSearch::estIntraPredLumaQT(TComDataCU* pcCU,
 
         predIntraAng( COMPONENT_Y, uiMode, piOrg, uiStride, piPred, uiStride, tuRecurseWithPU, bUseFilter, TComPrediction::UseDPCMForFirstPassIntraEstimation(tuRecurseWithPU, uiMode) );
 #if NH_3D_VSO // M34
-        Dist uiSad;           
+        Dist uiSad;  // RDO Distortion
         if ( m_pcRdCost->getUseVSO() )
         {
           if ( m_pcRdCost->getUseEstimatedVSD() )
@@ -3033,8 +3033,8 @@ TEncSearch::estIntraPredLumaQT(TComDataCU* pcCU,
           uiRdModeList[numModesForFullRD++] = mostProbableMode;
         }
       }
-    }
-    }
+      }
+    } // end of Fast Search (RMD)
     else
     {
       for( Int i=0; i < numModesForFullRD; i++)
@@ -3180,7 +3180,7 @@ TEncSearch::estIntraPredLumaQT(TComDataCU* pcCU,
       UInt uiOrgMode;
       if (uiMode < numModesForFullRD)
       {   
-        uiOrgMode = uiRdModeList[uiMode];
+        uiOrgMode = uiRdModeList[uiMode]; // RDO modes list (MPMs)
       }
       else
       {
@@ -7937,6 +7937,8 @@ Void TEncSearch::xSearchDmm1Wedge( TComDataCU* pcCU, UInt uiAbsPtIdx, Pel* piRef
   Distortion uiBestDist   = RDO_DIST_MAX;
 #endif
   UInt uiBestNodeId = 0;
+//  std::cout << "size of wedge node list:" << std::endl;
+//  std::cout << pacWedgeNodeList->size() << std::endl;
   for( UInt uiNodeId = 0; uiNodeId < pacWedgeNodeList->size(); uiNodeId++ )
   {
     TComWedgelet* pcWedgelet = &(pacWedgeList->at(pacWedgeNodeList->at(uiNodeId).getPatternIdx()));
